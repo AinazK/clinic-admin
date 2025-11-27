@@ -1,0 +1,270 @@
+.doctors-container {
+  display: flex;
+  min-height: 100vh;
+  color: #333;
+  background-color: #f9f9f9;
+  line-height: 100%;
+}
+
+.doctors-content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 20px 30px;
+}
+
+.doctors-content h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.button-doctor {
+  margin: 20px auto;
+  display: flex;
+}
+
+.doctors-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.doctors-table th,
+.doctors-table td {
+  padding: 8px 6px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #e0e0e0;
+}
+
+.doctors-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.doctors-table img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  padding: 4px;
+}
+
+.inline-input {
+  width: 100%;
+  padding: 5px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.doc-item input[type="text"],
+.doc-item input[type="file"] {
+  width: 100%;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.doc-item-block {
+  max-width: 400px;
+}
+
+.doc-link {
+  cursor: pointer;
+  color: #1976d2;
+  padding: 6px 8px;
+  display: inline-block;
+  border-radius: 6px;
+  background-color: #e8f0fe;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.doc-actions-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.doc-actions-row button {
+  flex: 1;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.add-doc-btn {
+  background: #e8f5e9;
+  border-color: #81c784;
+  color: #2e7d32;
+  padding: 5px 8px;
+  font-size: 12px;
+  width: 100%;
+}
+
+.add-doc-btn:hover {
+  background: #81c784;
+  color: white;
+}
+
+.delete-doc-btn {
+  background: #ffebee;
+  border-color: #e57373;
+  color: #c62828;
+}
+
+.delete-doc-btn:hover {
+  background: #e57373;
+  color: white;
+}
+
+.doc-actions-row button:active {
+  transform: scale(0.96);
+}
+
+.doctors-table input[type="text"],
+.doctors-table input[type="number"],
+.doctors-table input[type="file"] {
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doctors-table input[type="text"]:focus,
+.doctors-table input[type="number"]:focus,
+.doctors-table input[type="file"]:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 3px rgba(25, 118, 210, 0.4);
+  outline: none;
+}
+
+.doctors-table input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.doctors-table .action-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.doctors-table .action-buttons button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.doctors-table .edit-btn {
+  background: #e3f2fd;
+  border-color: #64b5f6;
+  color: #1565c0;
+}
+
+.doctors-table .edit-btn:hover {
+  background: #64b5f6;
+  color: white;
+}
+
+.doctors-table .save-btn {
+  background: #e8f5e9;
+  border-color: #81c784;
+  color: #2e7d32;
+}
+
+.doctors-table .save-btn:hover {
+  background: #81c784;
+  color: white;
+}
+
+.doctors-table .cancel-btn {
+  background: #ffebee;
+  border-color: #e57373;
+  color: #c62828;
+}
+
+.doctors-table .cancel-btn:hover {
+  background: #e57373;
+  color: white;
+}
+
+.doctors-table .action-buttons button:active {
+  transform: scale(0.96);
+}
+
+.doctors-table th:first-child,
+.doctors-table td:first-child {
+  width: 138px;
+}
+
+.doc-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.doc-modal-content {
+  padding: 20px;
+  border-radius: 8px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.doc-modal-content img {
+  max-height: calc(90vh - 40px);
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: contain;
+}
+
+.doc-modal-content p {
+  background-color: #f5f5f5;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.doc-modal-content button {
+  margin-top: 12px;
+  padding: 6px 12px;
+  border: none;
+  background-color: #1976d2;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.doc-modal-content button:hover {
+  background-color: #125ab3;
+}
+
+.doc-item {
+  margin-bottom: 6px; /* отступ между документами */
+}
