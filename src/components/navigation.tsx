@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import api from "../api";
 
 export default function Navigation() {
   const location = useLocation();
@@ -7,6 +8,14 @@ export default function Navigation() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     navigate("/auth");
+  };
+
+  const handleRunSync = async () => {
+    try {
+      await api.post("/apismedia/doctors");
+    } catch (err) {
+      alert("Ошибка запроса");
+    }
   };
 
   return (
@@ -96,6 +105,36 @@ export default function Navigation() {
           >
             Филиалы
           </Link>
+
+          <button
+            onClick={handleRunSync}
+            style={{
+              textAlign: "left",
+              padding: "12px 16px",
+              textDecoration: "none",
+              borderRadius: "6px",
+              fontWeight: "500",
+              transition: "all 0.25s",
+              border: "none",
+              backgroundColor: "transparent",
+              color: "#495057",
+              cursor: "pointer",
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = "#495057";
+            }}
+            onMouseDown={(e) => {
+              e.currentTarget.style.backgroundColor = "#1976d2";
+              e.currentTarget.style.color = "white";
+            }}
+            onMouseUp={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = "#495057";
+            }}
+          >
+            Обновить
+          </button>
         </div>
       </div>
 

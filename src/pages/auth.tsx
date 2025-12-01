@@ -19,6 +19,9 @@ export default function Auth() {
 
       localStorage.setItem("authToken", response.data.access_token);
       localStorage.setItem("refreshToken", response.data.refresh_token);
+
+      handleRunSync();
+
       navigate("/doctors");
     } catch (err: any) {
       if (err.response?.status === 422) {
@@ -28,6 +31,14 @@ export default function Auth() {
       }
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleRunSync = async () => {
+    try {
+      await api.post("/apismedia/doctors");
+    } catch (err) {
+      alert("Ошибка запроса");
     }
   };
 

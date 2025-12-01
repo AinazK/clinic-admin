@@ -5,7 +5,7 @@ export const setLogoutHandler = (fn: () => void) => {
   onLogout = fn;
 };
 
-const apiURL = "https://plenty-ears-run.loca.lt/api/";
+const apiURL = "https://mcmedved-admin.ru/api/";
 
 const api = axios.create({
   baseURL: apiURL,
@@ -64,7 +64,7 @@ api.interceptors.response.use(
         }
 
         const refreshResponse = await axios.post(
-          apiURL + "/refresh",
+          apiURL + "refresh",
           {},
           {
             headers: {
