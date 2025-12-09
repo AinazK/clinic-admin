@@ -59,7 +59,11 @@ export default function Doctors() {
     }
   };
 
+  const [isSaving, setIsSaving] = useState(false);
+
   const handleSave = async (doctor: Doctor) => {
+    setIsSaving(true);
+
     const payload = {
       fio: doctor.fio,
       photo: doctor.photo,
@@ -74,11 +78,15 @@ export default function Doctors() {
       })),
     };
 
-    const updated = await updateDoctor(doctor.id, payload);
-    setVisibleDoctors((prev) =>
-      prev.map((d) => (d.id === doctor.id ? updated : d))
-    );
-    setEditingDoctorId(null);
+    try {
+      const updated = await updateDoctor(doctor.id, payload);
+      setVisibleDoctors((prev) =>
+        prev.map((d) => (d.id === doctor.id ? updated : d))
+      );
+      setEditingDoctorId(null);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const handleDocChange = (
@@ -314,8 +322,9 @@ export default function Doctors() {
                           <button
                             className="save-btn"
                             onClick={() => handleSave(doctor)}
+                            disabled={isSaving}
                           >
-                            Сохранить
+                            {isSaving ? "Сохранение..." : "Сохранить"}
                           </button>
                           <button
                             className="cancel-btn"

@@ -190,6 +190,11 @@
   color: #2e7d32;
 }
 
+.doctors-table .save-btn:disabled {
+  opacity: 0.6; /* обеление */
+  cursor: not-allowed;
+}
+
 .doctors-table .save-btn:hover {
   background: #81c784;
   color: white;
