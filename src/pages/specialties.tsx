@@ -51,7 +51,7 @@ export default function Specialties() {
           <table className="filials-table">
             <thead>
               <tr>
-                <th>easy-clinic cпециальность</th>
+                <th>Aplusmed cпециальность</th>
                 <th>tilda cпециальность</th>
                 <th>Действия</th>
               </tr>

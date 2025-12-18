@@ -5,7 +5,7 @@ export const setLogoutHandler = (fn: () => void) => {
   onLogout = fn;
 };
 
-const apiURL = "https://mcmedved-admin.ru/api/";
+const apiURL = "https://odd-jobs-smoke.loca.lt/api/";
 
 const api = axios.create({
   baseURL: apiURL,
