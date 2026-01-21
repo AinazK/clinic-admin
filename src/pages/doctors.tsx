@@ -23,7 +23,10 @@ export default function Doctors() {
     const fetchDoctors = async () => {
       setLoading(true);
       try {
-        const doctorsList = await getDoctors();
+        let doctorsList = await getDoctors();
+
+        doctorsList.sort((a, b) => a.fio.localeCompare(b.fio, "ru"));
+
         setAllDoctors(doctorsList);
 
         const firstDoctors = await Promise.all(
