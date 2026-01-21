@@ -27,7 +27,7 @@ export default function Doctors() {
         setAllDoctors(doctorsList);
 
         const firstDoctors = await Promise.all(
-          doctorsList.slice(0, PAGE_SIZE).map((doc) => getDoctorById(doc.id))
+          doctorsList.slice(0, PAGE_SIZE).map((doc) => getDoctorById(doc.id)),
         );
         setVisibleDoctors(firstDoctors);
         setNextIndex(PAGE_SIZE);
@@ -48,7 +48,7 @@ export default function Doctors() {
       const nextDoctors = await Promise.all(
         allDoctors
           .slice(nextIndex, nextIndex + PAGE_SIZE)
-          .map((doc) => getDoctorById(doc.id))
+          .map((doc) => getDoctorById(doc.id)),
       );
       setVisibleDoctors((prev) => [...prev, ...nextDoctors]);
       setNextIndex(nextIndex + PAGE_SIZE);
@@ -81,7 +81,7 @@ export default function Doctors() {
     try {
       const updated = await updateDoctor(doctor.id, payload);
       setVisibleDoctors((prev) =>
-        prev.map((d) => (d.id === doctor.id ? updated : d))
+        prev.map((d) => (d.id === doctor.id ? updated : d)),
       );
       setEditingDoctorId(null);
     } finally {
@@ -93,7 +93,7 @@ export default function Doctors() {
     doctorId: number,
     docId: number,
     field: "description" | "file_url",
-    value: string
+    value: string,
   ) => {
     setVisibleDoctors((prev) =>
       prev.map((d) =>
@@ -101,11 +101,11 @@ export default function Doctors() {
           ? {
               ...d,
               documents: d.documents.map((doc) =>
-                doc.id === docId ? { ...doc, [field]: value } : doc
+                doc.id === docId ? { ...doc, [field]: value } : doc,
               ),
             }
-          : d
-      )
+          : d,
+      ),
     );
   };
 
@@ -119,6 +119,7 @@ export default function Doctors() {
           <thead>
             <tr>
               <th>Фото</th>
+              <th>id</th>
               <th>ФИО</th>
               <th>Специальности</th>
               <th>Стаж</th>
@@ -151,8 +152,8 @@ export default function Doctors() {
                                 prev.map((d) =>
                                   d.id === doctor.id
                                     ? { ...d, photo: reader.result as string }
-                                    : d
-                                )
+                                    : d,
+                                ),
                               );
                             };
                             reader.readAsDataURL(file);
@@ -163,7 +164,7 @@ export default function Doctors() {
                       <img src={doctor.photo} alt={doctor.fio} />
                     )}
                   </td>
-
+                  <td>{doctor.id}</td>
                   <td>{doctor.fio}</td>
                   <td>{doctor.specialties.map((s) => s.title).join(", ")}</td>
                   <td>
@@ -180,8 +181,8 @@ export default function Doctors() {
                                     ...d,
                                     experience: parseInt(e.target.value) || 0,
                                   }
-                                : d
-                            )
+                                : d,
+                            ),
                           )
                         }
                       />
@@ -211,7 +212,7 @@ export default function Doctors() {
                                           doctor.id,
                                           doc.id,
                                           "file_url",
-                                          reader.result as string
+                                          reader.result as string,
                                         );
                                       reader.readAsDataURL(file);
                                     }}
@@ -225,7 +226,7 @@ export default function Doctors() {
                                         doctor.id,
                                         doc.id,
                                         "description",
-                                        e.target.value
+                                        e.target.value,
                                       )
                                     }
                                   />
@@ -240,11 +241,11 @@ export default function Doctors() {
                                               ? {
                                                   ...d,
                                                   documents: d.documents.filter(
-                                                    (x) => x.id !== doc.id
+                                                    (x) => x.id !== doc.id,
                                                   ),
                                                 }
-                                              : d
-                                          )
+                                              : d,
+                                          ),
                                         )
                                       }
                                     >
@@ -282,8 +283,8 @@ export default function Doctors() {
                                       },
                                     ],
                                   }
-                                : d
-                            )
+                                : d,
+                            ),
                           )
                         }
                       >
@@ -303,8 +304,8 @@ export default function Doctors() {
                             prev.map((d) =>
                               d.id === doctor.id
                                 ? { ...d, is_active: e.target.checked }
-                                : d
-                            )
+                                : d,
+                            ),
                           )
                         }
                       />

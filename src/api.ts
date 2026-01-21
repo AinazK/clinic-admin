@@ -5,7 +5,7 @@ export const setLogoutHandler = (fn: () => void) => {
   onLogout = fn;
 };
 
-const apiURL = "https://odd-jobs-smoke.loca.lt/api/";
+const apiURL = "https://admin-aplusmed.ru/api/";
 
 const api = axios.create({
   baseURL: apiURL,
@@ -72,7 +72,7 @@ api.interceptors.response.use(
               "Content-Type": "application/json",
               Accept: "application/json",
             },
-          }
+          },
         );
 
         const newAccessToken = refreshResponse.data.access_token;
@@ -105,7 +105,7 @@ api.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;
